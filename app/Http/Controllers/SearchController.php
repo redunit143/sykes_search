@@ -2,35 +2,44 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-use App\Models\Bookings;
-use App\Repositories\BookingRepository;
-use App\Repositories\BookingRepositoryInterface;
+use App\Http\Requests\IndexSearchRequest;
+use App\Http\Requests\SearchRequest;
+use App\Repositories\PropertyRepositoryInterface;
+use Illuminate\Contracts\View\View;
 
 class SearchController extends Controller
 {
+    private int $searchItemsPerPage = 4;
     /**
      *
-     * @var \App\Repositories\BookingRepository
+     * @var \App\Repositories\PropertyRepository
      */
-    private $bookingRepository;
+    private PropertyRepositoryInterface $propertyRepository;
 
-    public function __construct(BookingRepositoryInterface $bookingRepository)
+    public function __construct(PropertyRepositoryInterface $propertyRepository)
     {
-        $this->bookingRepository = $bookingRepository;
+        $this->propertyRepository = $propertyRepository;
     }
 
-    //
-    public function getProperty()
+    /**
+     *
+     * @param IndexSearchRequest $request
+     * @return View
+     */
+    public function index(): View
     {
-        //return $this->bookingRepository->all();
-        return $this->bookingRepository->findByPk(2);
+            return view('property.lookup');
     }
 
-    public function propertyLookUp()
+    /**
+     *
+     * @param SearchRequest $request
+     * @return View
+     */
+    public function propertyLookUp(SearchRequest $request): View
     {
-        $bookings = [];
-        //
-        return view('booking.lookup', compact('bookings'));
+        $builder = $this->propertyRepository->searchProperty();
+        $properties = $builder->paginate($this->searchItemsPerPage);
+        return view('property.lookup', compact('properties'));
     }
 }

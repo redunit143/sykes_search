@@ -3,8 +3,8 @@
 namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
-use App\Repositories\BookingRepositoryInterface;
-use App\Repositories\BookingRepository;
+use App\Repositories\PropertyRepositoryInterface;
+use App\Repositories\PropertyRepository;
 
 class RepositoryServiceProvider extends ServiceProvider
 {
@@ -25,6 +25,6 @@ class RepositoryServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        $this->app->bind(BookingRepositoryInterface::class, BookingRepository::class);
+        $this->app->bind(PropertyRepositoryInterface::class, PropertyRepository::class);
     }
 }

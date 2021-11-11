@@ -14,10 +14,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
-
-Route::post('/search', ['SearchController@propertyLookUp']);
-Route::get('/search', SearchController::class . '@getProperty');
+    Route::get('/', SearchController::class . '@index');
+    Route::post('/search', SearchController::class . '@propertyLookUp');
+    Route::get('/search', SearchController::class . '@propertyLookUp');
 
