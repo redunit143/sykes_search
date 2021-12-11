@@ -18,8 +18,8 @@
               <div class="container">
               <div class="container">
 
-                    <div class="dropdown">
-                        <select name="category_id">
+                    <div class="dropdownx">
+                        <select id="dropdown" class="selectpicker"  data-style="btn-primary" name="category_id">
                             @foreach ($categories as $cat)
                                 <option value="{{ $cat['id'] }}">{{ $cat['name'] }}</option>
                             @endforeach

@@ -26,6 +26,14 @@
             body {
                 font-family: 'Nunito', sans-serif;
             }
+            #dropdown {
+                font-size: 120%;
+                color: #555;
+                background-color: #f8f8f8;
+                padding: 4px 8px;
+                border: 1px solid #b8b8b8;
+                border-radius: 5px;
+            }
         </style>
     </head>
     <body class="antialiased">
@@ -33,7 +41,7 @@
 
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
           <div class="container">
-              <span class="navbar-brand">Admin</span>
+              <span class="navbar-brand">Admin area</span>
 
               <div>
                 <div class="navbar-nav">

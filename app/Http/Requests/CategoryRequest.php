@@ -26,9 +26,7 @@ class ProductRequest extends FormRequest
     {
         return [
             'name' => ['required', 'regex:/^[a-z0-9A-Z\s]*$/'],
-            'description' => ['nullable', 'regex:/^[a-z0-9A-Z\s,\\\\]*$/'],
-            'qty' => 'required|integer|min:0|max:9999',
-            'category' => 'required|min:1|max:999',
+            'parent_category_id' => 'nullable|exists:categories,id',
         ];
     }
 }
