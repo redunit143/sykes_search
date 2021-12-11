@@ -26,86 +26,29 @@
             body {
                 font-family: 'Nunito', sans-serif;
             }
-            ainput {
-                border: 2px solid #aaa;
-            }
-            xform {
-                width: 400px;
-                padding:10px;
-                border: 2px solid #777;
-            }
-            aform label {
-                display:block;
-                width:120px;
-                float:left;
-            }
-            #global-wrapper {
-                margin:20px;
-                padding:20px;
-                border: 3ps solid #ddd;
-            }
-            .alert-danger {
-                color: red;
-                display:block;
-            }
         </style>
     </head>
     <body class="antialiased">
         <div id="global-wrapper" class="">
-            @include('property.part.search-form')
 
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+          <div class="container">
+              <span class="navbar-brand">Admin</span>
 
-<div class="container">
-            @if (isset($properties))
-                @if ($properties->count())
-                    <h2>
-                        Search Results
-                        @include('property.part.search-form-button')
-                    </h2>
-                    <ul class="list-group">
-                    @foreach ($properties as $property)
-                        <li class="list-group-item">
-                            <h3> {{ $property->property_name }}</h3>
-                            <p>
-                                Location: {{ $property->location->location_name }}</br>
-                                Beds: {{ $property->beds }}</br>
-                                Sleeps: {{ $property->sleeps }}</br>
-                                Accepts Pets: {{ $property->accepts_pets }}</br>
-                                Near the Beach: {{ $property->near_beach }}</br>
-                            </p>
-                        </li>
-                    @endforeach
-                    </ul>
-                    <div  class="pagination-x">
-                    {{ $properties->appends(request()->input())->links() }}
-                    </div>
-                @else
-                    <p>
-
-                        No properties exist.
-
-                    </p>
-                @endif
+              <div>
+                <div class="navbar-nav">
+                  <a class="nav-item nav-link" href="categories">Categories</a>
+                  <a class="nav-item nav-link" href="products">Products</a>
+                </div>
+              </div>
+          </div>
+        </nav>
+        <br>
+            @if (isset($control))
+                <div class="container">
+                    @include($control['action'] . '.index')
+                </div>
             @endif
-</div>
-
-
         </div>
     </body>
-
-
-    <script type="text/javascript">
-        $(function() {
-            $('#startdate').datepicker();
-            $('#enddate').datepicker();
-
-            var d=$( "#enddate" )[0].value;
-            $( "#enddate" ).datepicker("option", "dateFormat", "yy-mm-dd");
-            $( "#enddate" )[0].value = d;
-
-            d=$( "#startdate" )[0].value;
-            $( "#startdate" ).datepicker("option", "dateFormat", "yy-mm-dd");
-            $( "#startdate" )[0].value = d;
-        });
-    </script>
 </html>

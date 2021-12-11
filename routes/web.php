@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\CategoriesController;
+use App\Http\Controllers\ProductsController;
 use App\Http\Controllers\SearchController;
 use Illuminate\Support\Facades\Route;
 
@@ -17,4 +19,10 @@ use Illuminate\Support\Facades\Route;
     Route::get('/', SearchController::class . '@index');
     Route::post('/search', SearchController::class . '@propertyLookUp');
     Route::get('/search', SearchController::class . '@propertyLookUp');
+
+
+    Route::get('/admin/categories', [CategoriesController::class , 'index']);
+    Route::post('/admin/categories', [CategoriesController::class , 'store']);
+    Route::get('/admin/products', [ProductsController::class , 'index']);
+    Route::post('/admin/products', [ProductsController::class , 'store']);
 

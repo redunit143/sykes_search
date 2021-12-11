@@ -1,16 +1,22 @@
 <!-- Modal -->
-<div id="myModal" class="modal fade" role="dialog">
+<div id="myModal" class="modal fade show" role="dialog">
   <div class="modal-dialog">
 
     <!-- Modal content-->
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal">&times;</button>
-        <h4 class="modal-title">Modal Header</h4>
+        <h4 class="modal-title">Property Search</h4>
       </div>
-      <div class="modal-body">
+
 
             <form method="POST" action="search">
+
+
+      <div class="modal-body">
+
+          <div class="container">
+          <div class="container">
                 <div class="form-group">
                     <label>Location</label></label><input class="form-control" type="input" name="location" value="{{ old('location') ? old('location') : request('location') }}">
                     @error('location')
@@ -18,14 +24,20 @@
                     @enderror
                 </div>
                 <div class="checkbox">
-                    <label>Near the Beach</label> <input name="near_beach" type="checkbox" value="1" {{ ((old('near_beach') ? old('near_beach') : request('near_beach')) == 1 ? 'checked="checked"' : '') }}>
+                    <label>
+                         <input name="near_beach" type="checkbox" value="1" {{ ((old('near_beach') ? old('near_beach') : request('near_beach')) == 1 ? 'checked="checked"' : '') }}>
+                         Near the Beach
+                    </label>
                     @error('near_beach')
                         <span class="alert alert-danger">{{ $errors->first('near_beach') }}</span>
                     @enderror
                 </div>
 
                 <div class="checkbox">
-                    <label>Accepts Pets <input name="accepts_pets" type="checkbox" value="1" {{ ((old('accepts_pets') ? old('accepts_pets') : request('accepts_pets')) == 1 ? 'checked="checked"' : '') }}></label>
+                    <label>
+                        <input name="accepts_pets" type="checkbox" value="1" {{ ((old('accepts_pets') ? old('accepts_pets') : request('accepts_pets')) == 1 ? 'checked="checked"' : '') }}>
+                        Accepts Pets
+                    </label>
                     @error('accepts_pets')
                         <span class="alert alert-danger">{{ $errors->first('accepts_pets') }}</span>
                     @enderror
@@ -66,13 +78,19 @@
                         <span class="alert alert-danger">{{ $errors->first('end_date') }}</span>
                     @enderror
                 </div>
-                <button type="submit" class="btn btn-primary">Submit</button>
-            </form>
+            </div>
+            </div>
      </div>
 
       <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-default " data-dismiss="modal">Close</button>
+                <button type="submit" class="btn btn-primary ">Submit</button>
       </div>
+
+
+            </form>
+
+
     </div>
 
   </div>
